@@ -8,25 +8,29 @@
 </head>
 <body>
     <h1 class="header">
-        Team Seas Data Analysis - A Basic Web Scrapping Project
+        Team Seas Data Analysis
     </h1>
-    <div class="donation-display" style="display:flex;">
+    <div class="donation-display">
         <div>
-            Current Total Donation: ${{ data.count[:2] + ',' + data.count[2:5] + ',' + data.count[5:]}}
+            <strong>Current Total Donation</strong><br><div class="donation-amount"> ${{ data.count[:2] + ',' + data.count[2:5] + ',' + data.count[5:]}}</div>
         </div>
         <div>
-            Target: $30,000,000
+            <strong>Target</strong><br><div class="donation-amount">$30,000,000</div>
         </div>
         {% set temp = (30000000 - data.count|int)|string %}
         <div>
-            Remaining: ${{ temp[:2] + ',' + temp[2:5] + ',' + temp[5:]}}
+            <strong>Remaining</strong><br><div class="donation-amount"> ${{ temp[:2] + ',' + temp[2:5] + ',' + temp[5:]}}</div>
         </div>
     </div>
     <nav>
-        <ul style="display: flex; flex-wrap: wrap; flex-grow:1;">
-            <li ><a href="{{ url_for('home') }}">Home</a></li>
-            <li style="margin-left:25px"><a href="{{ url_for('teams') }}">Most</a></li>
-        </ul>
+        <div class="nav-bar">
+            <div>
+                <a href="{{ url_for('home') }}">Home</a>
+            </div>
+            <div>
+                <a href="{{ url_for('teams') }}">Most</a>
+            </div>
+        </div>
     </nav>
 
     {% block content %}

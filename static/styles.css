@@ -1,4 +1,5 @@
 .header{
+    box-sizing: border-box;
     background-color: aqua;
     width: 100%;
     height: 100px;
@@ -9,6 +10,7 @@
     box-shadow:rgba(56, 56, 56, 0.35) 0px 50px 36px -45px inset;
     color: red;
     text-shadow: 1.7px 1.7px #0000FF;
+    font-size: 40px;
 }
 
 .donation-display{
@@ -20,11 +22,37 @@
 }
 
 .donation-display > div{
-    margin-top: 25px;
-    margin-bottom: 25px;
-    margin-left: 15px;
-    margin-right: 40px;
+    margin: 25px 40px 25px 15px;
     font-size: 25px;
     background-color: turquoise;
-    
+    text-align: center;
+    border: 10px solid transparent;
+    flex-grow: 1;
+}
+
+.donation-amount{
+    font-size: 30px;
+    color: rgb(87, 87, 253);
+}
+
+.nav-bar{
+    display: flex;
+    margin: auto;
+    background-color: cornflowerblue;
+    height: 65px;
+}
+
+.nav-bar > div{
+    margin: 15px 15px 15px 15px; 
+    font-size: 25px;
+    height: 32px;
+    width: 100px;
+    background-color: yellow;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.nav-bar > div > a{
+    color: cornflowerblue;
+    text-decoration: none;
 }
