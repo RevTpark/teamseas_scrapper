@@ -3,7 +3,7 @@
 {% block content %}
     <div class="graph">
         <section>
-            <h1>Donations per Time</h1>
+            <h1>Current Donations sorted by Time</h1>
             <canvas id="Graph1" width="700" height="200"></canvas>
             <script>
                 var ctx = document.getElementById('Graph1').getContext('2d');
@@ -28,8 +28,9 @@
             </script>
         </section>
         <section>
-            <h1>Total Donations per Team</h1>
+            <h1>Current Team Donations soretd by Time</h1>
             <canvas id="Graph2line" width="700" height="200"></canvas>
+            <h1>Represented by pie chart</h1>
             <canvas id="Graph2pie" width="700" height="200"></canvas>
             <script>
                 var ctx = document.getElementById('Graph2line').getContext('2d');
@@ -87,7 +88,7 @@
             </script>
         </section>
         <section>
-            <h1>Hourly Donations</h1>
+            <h1>Hourly Donations Analysis</h1>
             <canvas id="Graph3" width="700" height="200"></canvas>
             <script>
                 var ctx = document.getElementById('Graph3').getContext('2d');
@@ -112,7 +113,7 @@
             </script>
         </section>
         <section>
-            <h1>Minute Donations</h1>
+            <h1>Minutely Donations Analysis</h1>
             <canvas id="Graph4" width="700" height="200"></canvas>
             <script>
                 var ctx = document.getElementById('Graph4').getContext('2d');
