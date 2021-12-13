@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Team Seas Data Analysis</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" type="text/css"></link>
+</head>
+<body>
+    <h1 class="header">
+        Team Seas Data Analysis - A Basic Web Scrapping Project
+    </h1>
+    <div class="donation-display" style="display:flex;">
+        <div>
+            Current Total Donation: ${{ data.count[:2] + ',' + data.count[2:5] + ',' + data.count[5:]}}
+        </div>
+        <div>
+            Target: $30,000,000
+        </div>
+        {% set temp = (30000000 - data.count|int)|string %}
+        <div>
+            Remaining: ${{ temp[:2] + ',' + temp[2:5] + ',' + temp[5:]}}
+        </div>
+    </div>
+    <nav>
+        <ul style="display: flex; flex-wrap: wrap; flex-grow:1;">
+            <li ><a href="{{ url_for('home') }}">Home</a></li>
+            <li style="margin-left:25px"><a href="{{ url_for('teams') }}">Most</a></li>
+        </ul>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

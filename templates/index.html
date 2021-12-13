@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>Donations per Time</h1>
+    <canvas id="Graph1" width="700" height="200"></canvas>
+    <script>
+        var ctx = document.getElementById('Graph1').getContext('2d');
+        var lineChart = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: {{ data.graph1.label | safe }},
+                datasets: [
+                    {
+                        label: "Donated Amount",
+                        data: {{ data.graph1.value | safe }},
+                        fill: true,
+                        borderColor: "rgb(75, 192, 192)",
+                        lineTension: 0.1
+                    }
+                ]
+            },
+            options: {
+                responsive: true
+            }
+        })
+    </script>
+    <h1>Total Donations per Team</h1>
+    <canvas id="Graph2line" width="700" height="200"></canvas>
+    <canvas id="Graph2pie" width="700" height="200"></canvas>
+    <script>
+        var ctx = document.getElementById('Graph2line').getContext('2d');
+        var lineChart = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: {{ data.graph2.label | safe }},
+                datasets: [
+                    {
+                        label: "Donated Amount",
+                        data: {{ data.graph2.value | safe }},
+                        fill: true,
+                        borderColor: "rgb(75, 192, 192)",
+                        lineTension: 0.1
+                    }
+                ]
+            },
+            options: {
+                responsive: true
+            }
+        })
+
+        var ctx = document.getElementById('Graph2pie').getContext('2d');
+        var lineChart = new Chart(ctx, {
+            type: "pie",
+            data: {
+                labels: {{ data.graph2.label | safe }},
+                datasets: [
+                    {
+                        label: "Donated Amount",
+                        data: {{ data.graph2.value | safe }},
+                        backgroundColor: [
+                        ],
+                        borderColor: [
+                        ],
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true
+            }
+        })
+        var nice = lineChart.data.datasets[0];
+        for(let i=0; i<{{ data.graph2.value|length }}; i++)
+        {
+            r = Math.floor(Math.random() * 200);
+            g = Math.floor(Math.random() * 200);
+            b = Math.floor(Math.random() * 200);
+            bgcolor = 'rgba(' + r + ', ' + g + ', ' + b + ', 0.4)';
+            brcolor = 'rgba(' + r + ', ' + g + ', ' + b + ', 1)';
+            nice.backgroundColor.push(bgcolor);
+            nice.borderColor.push(brcolor);
+        }
+    </script>
+    <h1>Hourly Donations</h1>
+    <canvas id="Graph3" width="700" height="200"></canvas>
+    <script>
+         var ctx = document.getElementById('Graph3').getContext('2d');
+            var lineChart = new Chart(ctx, {
+                type: "line",
+                data: {
+                    labels: {{ data.graph3.label | safe }},
+                    datasets: [
+                        {
+                            label: "Donated Amount",
+                            data: {{ data.graph3.value | safe }},
+                            fill: true,
+                            borderColor: "rgb(75, 192, 192)",
+                            lineTension: 0.1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true
+                }
+            })
+    </script>
+    <h1>Minute Donations</h1>
+    <canvas id="Graph4" width="700" height="200"></canvas>
+    <script>
+         var ctx = document.getElementById('Graph4').getContext('2d');
+         var lineChart = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: {{ data.graph4.label | safe }},
+                datasets: [
+                    {
+                        label: "Donated Amount",
+                        data: {{ data.graph4.value | safe }},
+                        fill: true,
+                        borderColor: "rgb(75, 192, 192)",
+                        lineTension: 0.1
+                    }
+                ]
+            },
+            options: {
+                responsive: true
+            }
+        })
+    </script>
+{% endblock %}

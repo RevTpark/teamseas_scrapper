@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Single Most Donation</h1>
+    <canvas id="Graph1" width="700" height="200"></canvas>
+    <script>
+         var ctx = document.getElementById('Graph1').getContext('2d');
+         var lineChart = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: {{ data.graph1.label | safe }},
+                datasets: [
+                    {
+                        label: "Donated Amount",
+                        data: {{ data.graph1.value | safe }},
+                        fill: true,
+                        borderColor: "rgb(75, 192, 192)",
+                        lineTension: 0.1,
+                        backgroundColor: "rgba(0,0,0, 0.5)"
+                    }
+                ]
+            },
+            options: {
+                responsive: true
+            }
+        })
+    </script>
+
+    <h1>Donations vs Time</h1>
+    <canvas id="Graph2" width="700" height="200"></canvas>
+    <script>
+         var ctx = document.getElementById('Graph2').getContext('2d');
+         var lineChart = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: {{ data.graph2.label | safe }},
+                datasets: [
+                    {
+                        label: "Donated Amount",
+                        data: {{ data.graph2.value | safe }},
+                        fill: true,
+                        borderColor: "rgb(75, 192, 192)",
+                        lineTension: 0.1,
+                        backgroundColor: "rgba(75, 192, 192, 0.5)"
+                    }
+                ]
+            },
+            options: {
+                responsive: true
+            }
+        })
+    </script>
+
+    <h1>Team vs Team avg</h1>
+    <canvas id="Graph3" width="700" height="200"></canvas>
+    <script>
+         var ctx = document.getElementById('Graph3').getContext('2d');
+         var lineChart = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: {{ data.graph3.label | safe }},
+                datasets: [
+                    {
+                        label: "Team Donations",
+                        data: {{ data.graph3.value1 | safe }},
+                        borderColor: 'rgb(75, 192, 192)',
+                        backgroundColor: "rgba(75, 192, 192, 0.5)"
+                    },
+                    {
+                        label: "Avg Donations",
+                        data: {{ data.graph3.value2 | safe }},
+                        borderColor: 'rgb(255, 0, 0)',
+                        backgroundColor: "rgba(255, 0, 0, 0.5)"
+                    }
+                ]
+            },
+            options: {
+                responsive: true
+            }
+        })
+    </script>
+{% endblock %}
