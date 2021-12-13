@@ -1,3 +1,7 @@
+body{
+    background-color: rgba(123, 255, 237, 0.616);
+}
+
 .header{
     box-sizing: border-box;
     background-color: aqua;
@@ -55,4 +59,17 @@
 .nav-bar > div > a{
     color: cornflowerblue;
     text-decoration: none;
+}
+
+.graph > section{
+    background-color: whitesmoke;
+    box-sizing: border-box;
+}
+
+.graph > section > h1{
+    font-size: 40px;
+    background-color: rgb(0, 225, 255);
+    color: aliceblue;
+    text-align: center;
+    margin-top: 75px;
 }
