@@ -63,6 +63,3 @@ def teams():
     data["graph3"] = {"label": team_labels, "value1": team_values, "value2": avg_value}
     return render_template("teams.html", data=data)
 
-
-if __name__ == "__main__":
-    app.run(debug=True)
