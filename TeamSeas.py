@@ -10,7 +10,7 @@ import requests
 import pandas
 from bs4 import BeautifulSoup
 from datetime import datetime
-import locale
+# import locale
 # import matplotlib.pyplot as plt
 
 def get_count():
@@ -18,7 +18,7 @@ def get_count():
     return req.json()["count"]
 
 
-locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
+# locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
 headers = {"User-Agent": "Mozilla/5.0"}
 # r = requests.get("https://teamseas.org/all-donors/", headers=headers)
 r = requests.get("https://tscache.com/lb_recent.json")
@@ -36,7 +36,7 @@ for recents in donations["recent"]:
     else:
         d["team_name"] = "Anonymous"
     d["created"] = datetime.strptime(datetime.utcfromtimestamp(int(recents["created_at"])).strftime('%Y-%m-%d %H:%M:%S'), '%Y-%m-%d %H:%M:%S')
-    d["amount"] = locale.atoi(recents["pounds"])
+    d["amount"] = int(recents["pounds"].replace(",", ""))
     df_li.append(d)
 
 df = pandas.DataFrame(df_li)
@@ -95,7 +95,7 @@ df_li2 = []
 for mst in donations["most"]:
     d = {}
     d["name"] = mst["name"]
-    d["amount"] = locale.atoi(mst["pounds"])
+    d["amount"] = int(mst["pounds"].replace(",", ""))
     d["created"] = datetime.strptime(datetime.utcfromtimestamp(int(mst["created_at"])).strftime('%Y-%m-%d %H:%M:%S'), '%Y-%m-%d %H:%M:%S')
     df_li2.append(d)
 
@@ -125,7 +125,7 @@ for i in donations["teams_most_donations"]:
         d["team_name"] = "Anonymous"
     else:
         d["team_name"] = i["team"]
-    d["donation"] = locale.atoi(i["total_donation"])
+    d["donation"] = int(i["total_donation"].replace(",", ""))
     d["members"] = int(i["total_members"])
     df_li3.append(d)
 
@@ -142,3 +142,5 @@ def team_donation():
 # plt.figure(figsize=(25, 3))
 # plt.plot(df["team_name"], df["avg"])
 
+
+# %%
